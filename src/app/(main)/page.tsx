@@ -1,6 +1,6 @@
 const Page = () => {
   return (
-    <div>Hello Next.js!/main</div>
+    <div>Hello Next.js!</div>
   );
 }
 
