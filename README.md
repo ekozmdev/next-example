@@ -6,6 +6,41 @@ https://www.udemy.com/course/nextjs-fullstack/
 
 の作業用のリポジトリ
 
+## サーバーコンポーネントとクライアントコンポーネント
+
+- クライアント: ブラウザ
+- サーバー: nextがデプロイされているサーバー
+
+### クライアントコンポーネント (CC)
+
+- 従来のReactコンポーネント
+- ブラウザ側で処理されてレンダリングされる
+- Next.jsではファイルの先頭に`"use client"`をつけるとクライアントコンポーネントになる
+
+### サーバーコンポーネント
+
+- サーバー側でレンダリングされる
+- Next.jsではこっちがデフォルト
+- メリット
+  - 処理がサーバー側なのでパフォーマンスが良くなる
+  - ブラウザに渡すJSのバンドルサイズが小さくなる
+  - APIkey などの機密情報がクライアントサイドに渡らない
+  - リクエストが来た時にHTMLが返るのでSEOにも効果的
+    - ヘッドレスブラウザで見ればいいと思うけどな
+- デメリット
+  - 使えない機能がある
+    - useStateとかuseEffectなどのreact hooks
+    - onClickとかonChange
+    - ブラウザAPI
+  - 初期ページ以外はCCの方が早い場合がある
+    - CCはブラウザのJSで動くから
+
+## 使い分け
+
+- 基本はサーバーコンポーネントで書く
+- CCでしか使えない機能が必要ならCC
+  - ページ全体をCCかSCに決める必要はないのでボタンとか検索ボックスだけCCにするとよいらしい
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
