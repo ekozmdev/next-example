@@ -41,6 +41,14 @@ https://www.udemy.com/course/nextjs-fullstack/
 - CCでしか使えない機能が必要ならCC
   - ページ全体をCCかSCに決める必要はないのでボタンとか検索ボックスだけCCにするとよいらしい
 
+## Server Actions
+
+- クライアント側から直接呼び出せる、サーバー側の非同期関数
+  - フォームの送信とか
+  - 普通ならAPI経由でバックエンドの処理を呼び出す
+- action={サーバー側の関数名}で呼び出せる
+  - クライアント側にAPI呼び出しの処理を書かなくていい
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
