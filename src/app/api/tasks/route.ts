@@ -10,10 +10,15 @@ const tasks: Task[] = [
   { id: 2, name: 'ランニングを頑張る' },
 ];
 
+// 疑似的に遅延させる関数
+const sleep = (ms: number): Promise<void> =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
 // route.tsの中に、HTTPメソッドの名前で非同期関数を定義するとルートハンドラになる
 // export const POST = async () => {}
 // export const PUT = async () => {}
 export const GET = async (request: Request) => {
+  await sleep(3000);
   // レスポンスはNextResponseで返す
   // JSONで返す場合はNextResponse.json()にオブジェクトとして入れる。{}で囲む方が良い
   // フロントエンドでresponse.tasksで取り出せるようになる
