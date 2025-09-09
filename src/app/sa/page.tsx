@@ -1,5 +1,6 @@
 "use client";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { createTask } from "@/app/actions/sampleActions";
 
 const ServerActionsPage = () => {
@@ -12,7 +13,7 @@ const ServerActionsPage = () => {
   const initialState = { error : "" };
   // state: サーバーアクションの戻り値, formAction: Server Actionsと同じ動きをする関数
   // これでこのコンポーネントでServer Actionsの戻り値が使える
-  const [state, formAction] = useFormState(createTaskWithTaskId, initialState);
+  const [state, formAction] = useActionState(createTaskWithTaskId, initialState);
 
   const SubmitButton = () => {
     // pendingはServer Actionsの送信中はtrueになる
