@@ -13,22 +13,17 @@ const ServerActionsPage = () => {
   const initialState = { error : "" };
   // state: サーバーアクションの戻り値, formAction: Server Actionsと同じ動きをする関数
   // これでこのコンポーネントでServer Actionsの戻り値が使える
-  const [state, formAction] = useActionState(createTaskWithTaskId, initialState);
 
-  const SubmitButton = () => {
-    // pendingはServer Actionsの送信中はtrueになる
-    const { pending } = useFormStatus(); // フォームの送信状態を取得
-    return (
-      <button type="submit" className="bg-gray-400 ml-2 px-2 disabled:bg-gray-300" disabled={pending}>
-        送信
-      </button>
-    )
-  }
+  // React19からuseActionStateが使える様になった -> isPendingが取れる -> useFormStatusいらない べんり〜〜〜
+  const [state, formAction, isPending] = useActionState(createTaskWithTaskId, initialState);
+
   return (
     <div>
         <form action={formAction}>
           <input type="text" id="name" name="name" className="bg-gray-200"/>
-          <SubmitButton/>
+          <button type="submit" className="bg-gray-400 ml-2 px-2 disabled:bg-gray-300" disabled={isPending}>
+            送信
+          </button>
           <div>{ state.error }</div>
         </form>
     </div>
